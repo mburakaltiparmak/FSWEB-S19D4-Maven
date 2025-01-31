@@ -3,8 +3,8 @@ package com.workintech.s19d1;
 import com.workintech.s19d1.entity.Actor;
 import com.workintech.s19d1.entity.Gender;
 import com.workintech.s19d1.entity.Movie;
-import com.workintech.s19d1.exceptions.ApiException;
-import com.workintech.s19d1.exceptions.ExceptionResponse;
+import com.workintech.s19d1.exception.ApiException;
+import com.workintech.s19d1.exception.ExceptionResponse;
 import com.workintech.s19d1.repository.ActorRepository;
 import com.workintech.s19d1.repository.MovieRepository;
 import com.workintech.s19d1.service.ActorServiceImpl;
@@ -76,16 +76,16 @@ class MainTest {
     @DisplayName("Add Movie to Actor")
     void testAddMovieToActor() {
         actor.addMovie(movie);
-        assertEquals(1, actor.getMovies().size(), "Actor should have one movie.");
-        assertTrue(actor.getMovies().contains(movie), "Movie should be in actor's movie list.");
+        assertEquals(1, actor.getMovieList().size(), "Actor should have one movie.");
+        assertTrue(actor.getMovieList().contains(movie), "Movie should be in actor's movie list.");
     }
 
     @Test
     @DisplayName("Add Actor to Movie")
     void testAddActorToMovie() {
         movie.addActor(actor);
-        assertEquals(1, movie.getActors().size(), "Movie should have one actor.");
-        assertTrue(movie.getActors().contains(actor), "Actor should be in movie's actor list.");
+        assertEquals(1, movie.getActorList().size(), "Movie should have one actor.");
+        assertTrue(movie.getActorList().contains(actor), "Actor should be in movie's actor list.");
     }
 
     @Test
@@ -190,7 +190,7 @@ class MainTest {
 
         assertThatThrownBy(() -> actorService.findById(actorId))
                 .isInstanceOf(ApiException.class)
-                .hasMessageContaining("actor is not found with id: " + actorId);
+                .hasMessageContaining("Actor is not found with id: " + actorId);
     }
 
     @Test

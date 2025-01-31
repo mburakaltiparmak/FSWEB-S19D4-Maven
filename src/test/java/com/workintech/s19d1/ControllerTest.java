@@ -7,7 +7,7 @@ import com.workintech.s19d1.dto.ActorRequest;
 import com.workintech.s19d1.entity.Actor;
 import com.workintech.s19d1.entity.Gender;
 import com.workintech.s19d1.entity.Movie;
-import com.workintech.s19d1.exceptions.ApiException;
+import com.workintech.s19d1.exception.ApiException;
 import com.workintech.s19d1.service.ActorService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -63,7 +63,7 @@ class ControllerTest {
         movie.setRating(5);
         movie.setDirectorName("Sample Director");
 
-        actor.setMovies(Arrays.asList(movie));
+        actor.setMovieList(Arrays.asList(movie));
 
         actorRequest = new ActorRequest();
         actorRequest.setActor(actor);
