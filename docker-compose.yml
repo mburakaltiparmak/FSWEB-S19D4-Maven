@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "9000:9000"
+    depends_on:
+      - postgres-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=Burak123.
+
+  postgres-db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Burak123.
+      POSTGRES_DB: postgres
+    ports:
+      - "5433:5432"  # Dış port'u 5433 olarak değiştirdik
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
