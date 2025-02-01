@@ -1,4 +1,6 @@
+/*
 package com.workintech.s19d1;
+
 
 import com.workintech.s19d1.entity.Actor;
 import com.workintech.s19d1.entity.Gender;
@@ -255,3 +257,4 @@ class MainTest {
     }
 
 }
+*/

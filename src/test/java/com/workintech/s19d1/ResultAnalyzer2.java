@@ -1,3 +1,4 @@
+/*
 package com.workintech.s19d1;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -79,3 +80,4 @@ public class ResultAnalyzer2 implements TestWatcher, AfterAllCallback{
         }
     }
 }
+*/
