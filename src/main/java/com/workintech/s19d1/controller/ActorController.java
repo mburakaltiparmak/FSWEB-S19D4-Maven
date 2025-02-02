@@ -13,14 +13,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @RestController
 @RequestMapping("/actor")
+@CrossOrigin(origins = "*")
 public class ActorController {
-    @Autowired
-    private ActorService actorService;
 
+    private final ActorService actorService;
+
+    public ActorController(ActorService actorService) {
+        this.actorService = actorService;
+    }
     @GetMapping
     public List<ActorResponse> findAll(){
         List<Actor> actors = actorService.findAll();
