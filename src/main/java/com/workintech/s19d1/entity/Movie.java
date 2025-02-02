@@ -37,7 +37,7 @@ public class Movie {
     @JoinTable(name = "actor_movie", schema = "fsweb",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id"))
-    private List<Actor> actorList;
+    private List<Actor> actorList = new ArrayList<>();
 
     public void addActor(Actor actor) {
         if (actorList == null)
