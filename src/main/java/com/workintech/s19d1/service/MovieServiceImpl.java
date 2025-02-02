@@ -37,7 +37,7 @@ public class MovieServiceImpl implements MovieService{
         toBeUpdatedMovie.setDirectorName(updatedMovie.getDirectorName());
         toBeUpdatedMovie.setRating(updatedMovie.getRating());
         toBeUpdatedMovie.setReleaseDate(updatedMovie.getReleaseDate());
-        return toBeUpdatedMovie;
+        return movieRepository.save(toBeUpdatedMovie);
     }
 
     @Override

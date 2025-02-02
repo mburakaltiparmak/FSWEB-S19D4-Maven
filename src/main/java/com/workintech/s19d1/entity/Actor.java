@@ -34,19 +34,22 @@ public class Actor {
     @Column(name = "birth_date")
     private LocalDate birthDate;
 
-    @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
-    fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+            fetch = FetchType.LAZY) // EAGER yerine LAZY
     @JoinTable(
-            name = "actor_movie", // Hem Actor hem Movie için ortak isim
+            name = "actor_movie",
             joinColumns = @JoinColumn(name = "actor_id"),
             inverseJoinColumns = @JoinColumn(name = "movie_id")
     )
     private List<Movie> movieList = new ArrayList<>();
 
-
     public void addMovie(Movie movie) {
         if (movieList == null)
             movieList = new ArrayList<>();
         movieList.add(movie);
+        // Karşılıklı ilişki kurulması
+        if (!movie.getActorList().contains(this)) {
+            movie.getActorList().add(this);
+        }
     }
 }
