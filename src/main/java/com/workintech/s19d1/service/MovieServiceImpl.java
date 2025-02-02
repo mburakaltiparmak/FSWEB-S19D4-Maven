@@ -5,15 +5,21 @@ import com.workintech.s19d1.exception.ApiException;
 import com.workintech.s19d1.repository.MovieRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class MovieServiceImpl implements MovieService{
-    private MovieRepository movieRepository;
+
+    private final MovieRepository movieRepository;
+
+    @Autowired
+    public MovieServiceImpl(MovieRepository movieRepository){
+        this.movieRepository=movieRepository;
+    }
     @Override
     public List<Movie> findAll() {
         return movieRepository.findAll();

@@ -5,15 +5,19 @@ import com.workintech.s19d1.exception.ApiException;
 import com.workintech.s19d1.repository.ActorRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class ActorServiceImpl implements ActorService{
-    private ActorRepository actorRepository;
+    private final ActorRepository actorRepository;
+    @Autowired
+    public ActorServiceImpl(ActorRepository actorRepository){
+        this.actorRepository=actorRepository;
+    }
     @Override
     public List<Actor> findAll() {
         return actorRepository.findAll();
